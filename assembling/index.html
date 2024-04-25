@@ -1,0 +1,712 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../installation/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+    
+    
+      
+        <title>Assembling genomes - DES Assembler App</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#des-assembler-protocol" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DES Assembler App" class="md-header__button md-logo" aria-label="DES Assembler App" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DES Assembler App
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Assembling genomes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DES Assembler App" class="md-nav__button md-logo" aria-label="DES Assembler App" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DES Assembler App
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Assembling genomes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Assembling genomes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Setting up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Setting up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Docker Desktop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-assembler-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the assembler app
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-selecting-files-for-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Selecting Files for Assembly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Selecting Files for Assembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-des-assembler-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open the DES Assembler app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drag-and-drop-files-for-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drag and drop files for assembly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-assembly-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Assembly progress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-finished-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. FINISHED Assembly
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-failed-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. FAILED Assembly
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install DES Assembler App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tech/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behind the scenes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Setting up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Setting up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Docker Desktop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-assembler-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the assembler app
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-selecting-files-for-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Selecting Files for Assembly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Selecting Files for Assembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-des-assembler-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open the DES Assembler app
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drag-and-drop-files-for-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drag and drop files for assembly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-assembly-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Assembly progress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-finished-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. FINISHED Assembly
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-failed-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. FAILED Assembly
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="des-assembler-protocol">DES Assembler protocol</h1>
+<blockquote>
+<p>v 1.0.0</p>
+</blockquote>
+<p>In this page, we will describe the standard workflow to assemble a bacterial genome taking in illumina paired-end reads in <code>fastq</code> format.</p>
+<h2 id="1-setting-up">1. Setting up</h2>
+<p>To run the <strong>DES Assembler app</strong>, your computer requires:</p>
+<ul>
+<li>Docker Desktop installed on your computer.</li>
+<li>The <strong>DES Assembler app</strong> installed on your computer.</li>
+</ul>
+<h3 id="running-docker-desktop">Running Docker Desktop</h3>
+<p>If Docker Desktop is currently active, you'll notice the Docker logo icon <img alt="docker logo" src="../img/docker_icon.svg" width="4%" /> displayed in your taskbar.</p>
+<p><img alt="Docker in taskbar" src="../img/docker_in_taskbar.png" /></p>
+<p>If you suspect that Docker Desktop isn't running, simply double-click on the Docker icon <img alt="docker logo" src="../img/docker_icon.svg" width="4%" /> on ypur desktop. This action will initiate and activate Docker in the background. </p>
+<h3 id="running-the-assembler-app">Running the assembler app</h3>
+<p>If the <strong>DES Assembler app</strong> is already active, you'll notice its icon <img alt="des logo" src="../img/des_icon.svg" width="4%" /> displayed in your desktop taskbar.</p>
+<p><img alt="App in taskbar" src="../img/app_in_taskbar.png" /></p>
+<p>or in your system tray.</p>
+<p><img alt="App in tray" src="../img/app_in_tray.png" /></p>
+<p>If you suspect that the <strong>DES Assembler app</strong> isn't running, simply double-click on the <strong>DES Assembler app</strong> icon <img alt="Existing df" src="../img/des_icon.svg" width="4%" /> on your desktop. This will launch the <strong>DES Assembler app</strong>.</p>
+<h2 id="2-selecting-files-for-assembly">2. Selecting Files for Assembly</h2>
+<p>Your computer is now ready to start assembling genomes. This step requires two paired <code>fastq</code> files from an illumina sequencing experiment per genome. When you move these two files to the designated folder, the <strong>DES Assembler app</strong> will detect them and start the assembly process. Once the assembly process is finalized, you will have access to the assembled data in <code>fasta</code> format, along with its corresponding quality metrics file.</p>
+<h3 id="open-the-des-assembler-app">Open the <strong>DES Assembler app</strong></h3>
+<p>Click on the <strong>DES Assembler app</strong> icon <img alt="docker logo" src="../img/des_icon.svg" width="4%" /> in your taskbar.</p>
+<p><img alt="App in taskbar" src="../img/app_in_taskbar.png" /></p>
+<p>This will bring the <strong>DES Assembler app</strong> app to the front, and it should look like this.</p>
+<p><img alt="Open App" src="../img/open_app.png" width="60%" /></p>
+<h3 id="drag-and-drop-files-for-assembly">Drag and drop files for assembly</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your paired <code>fastq</code> file should end in one of the following formats:</p>
+<ul>
+<li><code>{ID}_L001_R1_001.fastq.gz</code> and <code>{ID}_L001_R2_001.fastq.gz</code></li>
+</ul>
+</div>
+<p>Open the designated input folder by clicking on the folder icon <img alt="folder icon" src="../img/folder_icon.png" width="4%" /> in the <strong>DES Assembler app</strong>. This will open the designated input folder. </p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can change the input folder clicking on the settings icon <img alt="settings icon" src="../img/settings_icon.png" width="4%" />, and changing the directory in the <code>input folder</code> field. Finally, click on <strong>Save</strong>.</p>
+<p><img alt="Open App" src="../img/open_settings_input.png" width="60%" />    </p>
+</div>
+<p>Select the <code>fastq</code> files from the genomes you would like to assemble and move them to that designated folder. The <strong>DES Assembler app</strong> will detect the files in the input directory and start the assembly process.</p>
+<h2 id="3-assembly-progress">3. Assembly progress</h2>
+<p>The <strong>DES Assembler app</strong> will identify any new files within the input directory. These files will appear in the app labeled with the name preceding the <code>_</code> character. For instance, if your input files are named <code>bacteria_1.fastq.gz</code> and <code>bacteria_2.fastq.gz</code>, then the app will display the input genomic data as <strong><code>bacteria</code></strong>.</p>
+<p>Each genome will be assigned one of the followwing status:</p>
+<ul>
+<li><strong><code>UNPAIRED</code></strong> : The app has detected only one of the two paired <code>fastq</code> files</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you think you have moved both <code>fastq</code> files to the input directory, make sure the name of both files is <strong>identical</strong>.
+For example, <code>salmonella_1.fastq.gz</code> and <code>salmonela_2.fastq.gz</code> will be detected by the app as two different genomes: <code>salmonella</code> and <code>salmonela</code>, and they will both have the <code>UNPAIRED</code> status.</p>
+</div>
+<ul>
+<li><strong><code>PENDING</code></strong> : The app is currently running the maximum number of concurrent jobs it is allow to run. An entry with a <code>PENDING</code> status is in the queue and will start as <code>RUNNING</code> jobs move to the <code>FINISHED</code> or <code>FAILED</code> status.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can modify the maximum number of concurrent jobs the app can run by clicking on the settings icon <img alt="settings icon" src="../img/settings_icon.png" width="4%" /> and changing the number in the <code>Number of concurrent jobs</code> field. Finally, click on <strong>Save</strong>.</p>
+<p><img alt="Open App" src="../img/open_settings_concurrent.png" width="60%" />  </p>
+</div>
+<ul>
+<li><code>RUNNING</code> : The assembly process of the genomes with this status is currently ongoing and will move to the <code>FINISHED</code> or <code>FAILED</code> status.</li>
+<li><code>FAILED</code> : There has been an unexpected error, and the process has not produced an assembly.</li>
+<li><code>FINISHED</code> : The assembly process has completed succesfully.</li>
+</ul>
+<h2 id="4-finished-assembly">4. <code>FINISHED</code> Assembly</h2>
+<p>Once the assembly process has successfully concluded with the <code>FINISHED</code> status, you can access the assembly in <code>fasta</code> format and its accompanying quality metrics file by clicking on the corresponding label in the <strong>DES assembly app</strong>. This will open a folder labelled with the same name as the job in the app. This folder will contain two files:</p>
+<ul>
+<li><strong><code>sample.fasta</code></strong> : the resulting assembly in <code>fasta</code> format</li>
+<li><strong><code>stats</code></strong> : the quality metrics collected through the assembly process in <code>json</code> format.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can change the output folder clicking on the settings icon <img alt="settings icon" src="../img/settings_icon.png" width="4%" />, and changing the directory in the <code>output folder</code> field. Finally, click on <strong>Save</strong>.</p>
+<p><img alt="Open App" src="../img/open_settings_output.png" width="60%" />   </p>
+</div>
+<h2 id="5-failed-assembly">5. <code>FAILED</code> Assembly</h2>
+<p>If your genome displays the <code>FAILED</code> status, then the assembly did not complete as expected. Clicking on the corresponding label in the <strong>DES assembly app</strong> will show the log of the assembly process.</p>
+<p><img alt="Open Log" src="../img/open_log.png" width="60%" /></p>
+<p>These logs will contain important information regarding the assembly workflow of this genome. This details will prove invaluable in pinpointing the cause of any failure and devising potential solutions.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can see the log of any job, unless it has the <code>UNPAIRED</code> status, by clicking on <code>...</code> at the right end of each genome detected by the app.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>
